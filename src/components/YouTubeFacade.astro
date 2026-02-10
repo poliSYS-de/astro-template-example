@@ -1,0 +1,67 @@
+---
+interface Props {
+  videoId: string;
+  title: string;
+}
+
+const { videoId, title } = Astro.props;
+const thumbnailUrl = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
+---
+
+<div class="youtube-facade relative w-full aspect-video rounded-2xl overflow-hidden cursor-pointer group" data-video-id={videoId}>
+  <!-- Thumbnail -->
+  <img
+    src={thumbnailUrl}
+    alt={`YouTube Video: ${title}`}
+    width="1280"
+    height="720"
+    loading="lazy"
+    class="w-full h-full object-cover"
+  />
+
+  <!-- Dark overlay on hover -->
+  <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300"></div>
+
+  <!-- Play Button -->
+  <button
+    type="button"
+    class="absolute inset-0 flex items-center justify-center"
+    aria-label={`Video abspielen: ${title}`}
+  >
+    <div class="w-16 h-16 md:w-20 md:h-20 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:bg-red-700 group-hover:scale-110 transition-all duration-300">
+      <svg
+        class="w-6 h-6 md:w-8 md:h-8 text-white ml-1"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path d="M8 5v14l11-7z"/>
+      </svg>
+    </div>
+  </button>
+
+  <!-- Video title overlay -->
+  <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
+    <p class="text-white text-sm md:text-base font-medium truncate">{title}</p>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.youtube-facade').forEach((facade) => {
+    facade.addEventListener('click', function() {
+      const videoId = this.getAttribute('data-video-id');
+      if (!videoId) return;
+
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+      iframe.title = 'YouTube Video';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      iframe.className = 'absolute inset-0 w-full h-full';
+
+      this.innerHTML = '';
+      this.appendChild(iframe);
+      this.classList.remove('cursor-pointer', 'group');
+    });
+  });
+</script>

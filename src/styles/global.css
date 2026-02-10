@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans text-gray-text antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-dark font-bold;
+  }
+}
+
+@layer components {
+  /* Highlight (Akzentfarbe als Hintergrund) */
+  .highlight {
+    @apply bg-accent text-white px-2 py-0.5 rounded-sm;
+  }
+
+  /* Pill Button (Basis) */
+  .btn-pill {
+    @apply inline-flex items-center px-6 py-3 rounded-full font-medium transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply btn-pill bg-accent text-white hover:bg-accent-dark;
+  }
+
+  .btn-secondary {
+    @apply btn-pill bg-white border border-gray-200 text-dark hover:bg-gray-50;
+  }
+
+  .btn-outline {
+    @apply btn-pill border-2 border-accent text-accent hover:bg-accent hover:text-white;
+  }
+
+  /* Subheadline (Versalien, grau) */
+  .subheadline {
+    @apply text-xs uppercase tracking-widest text-gray-muted font-medium;
+  }
+
+  /* Section Spacing */
+  .section {
+    @apply py-20 md:py-32;
+  }
+
+  /* Container */
+  .container-narrow {
+    @apply max-w-4xl mx-auto px-6;
+  }
+
+  .container-wide {
+    @apply max-w-6xl mx-auto px-6;
+  }
+
+  /* Card */
+  .card {
+    @apply bg-white border border-gray-100 p-6 rounded-lg hover:shadow-lg transition-shadow duration-300;
+  }
+
+  /* Link */
+  .link {
+    @apply text-accent hover:text-accent-dark underline-offset-2 hover:underline transition-colors;
+  }
+}
+
+@layer utilities {
+  /* Smooth fade-in animation */
+  .fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}

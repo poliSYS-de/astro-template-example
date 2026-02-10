@@ -1,0 +1,94 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../config/site.config';
+---
+
+<Layout
+  title={`Datenschutz – ${siteConfig.name}`}
+  description={`Datenschutzerklaerung von ${siteConfig.name}`}
+>
+
+  <section class="section">
+    <div class="container-narrow">
+      <h1 class="text-4xl font-bold mb-8">Datenschutzerklaerung</h1>
+
+      <div class="prose prose-lg max-w-none">
+        <h2>1. Datenschutz auf einen Blick</h2>
+
+        <h3>Allgemeine Hinweise</h3>
+        <p>
+          Die folgenden Hinweise geben einen einfachen Ueberblick darueber, was
+          mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website
+          besuchen.
+        </p>
+
+        <h3>Datenerfassung auf dieser Website</h3>
+        <p>
+          <strong>Diese Website verwendet keine Cookies und kein Tracking.</strong>{' '}
+          Es werden keine Analyse-Tools (wie Google Analytics) eingesetzt.
+          Daher ist kein Cookie-Banner erforderlich.
+        </p>
+
+        <h2>2. Hosting</h2>
+        <p>
+          Diese Website wird extern gehostet. Die personenbezogenen Daten, die
+          auf dieser Website erfasst werden, werden auf den Servern des Hosters
+          gespeichert. Hierbei kann es sich insbesondere um IP-Adressen,
+          Kontaktanfragen, Meta- und Kommunikationsdaten, Vertragsdaten,
+          Kontaktdaten, Namen, Websitezugriffe und sonstige Daten, die ueber
+          eine Website generiert werden, handeln.
+        </p>
+
+        <h2>3. Allgemeine Hinweise und Pflichtinformationen</h2>
+
+        <h3>Datenschutz</h3>
+        <p>
+          Die Betreiber dieser Seiten nehmen den Schutz Ihrer persoenlichen
+          Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten
+          vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften
+          sowie dieser Datenschutzerklaerung.
+        </p>
+
+        <h3>Verantwortliche Stelle</h3>
+        <p>
+          {siteConfig.owner.name}<br />
+          Musterstrasse 1<br />
+          12345 Musterstadt<br />
+          {siteConfig.owner.email && (
+            <>E-Mail: {siteConfig.owner.email}</>
+          )}
+        </p>
+
+        <h2>4. Datenerfassung auf dieser Website</h2>
+
+        <h3>Server-Log-Dateien</h3>
+        <p>
+          Der Provider der Seiten erhebt und speichert automatisch Informationen
+          in sogenannten Server-Log-Dateien, die Ihr Browser automatisch an uns
+          uebermittelt. Dies sind:
+        </p>
+        <ul>
+          <li>Browsertyp und Browserversion</li>
+          <li>Verwendetes Betriebssystem</li>
+          <li>Referrer URL</li>
+          <li>Hostname des zugreifenden Rechners</li>
+          <li>Uhrzeit der Serveranfrage</li>
+          <li>IP-Adresse</li>
+        </ul>
+        <p>
+          Eine Zusammenfuehrung dieser Daten mit anderen Datenquellen wird nicht
+          vorgenommen.
+        </p>
+
+        <h2>5. Ihre Rechte</h2>
+        <p>
+          Sie haben jederzeit das Recht, unentgeltlich Auskunft ueber Herkunft,
+          Empfaenger und Zweck Ihrer gespeicherten personenbezogenen Daten zu
+          erhalten. Sie haben ausserdem ein Recht, die Berichtigung oder
+          Loeschung dieser Daten zu verlangen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</Layout>

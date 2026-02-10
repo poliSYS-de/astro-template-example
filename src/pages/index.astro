@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../config/site.config';
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<Layout title={`${siteConfig.name} – ${siteConfig.branding.tagline}`}>
+
+  <!-- Hero -->
+  <section class="section bg-white">
+    <div class="container-narrow text-center">
+      <p class="subheadline mb-4">{siteConfig.owner.role}</p>
+      <h1 class="text-4xl md:text-6xl font-bold text-dark mb-6 text-balance">
+        {siteConfig.branding.tagline}
+      </h1>
+      <p class="text-lg text-gray-muted max-w-2xl mx-auto mb-8">
+        {siteConfig.seo.defaultDescription}
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={`${baseUrl}/kontakt`} class="btn-primary">Kontakt aufnehmen</a>
+        <a href={`${baseUrl}/leistungen`} class="btn-secondary">Leistungen ansehen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leistungen Preview -->
+  <section class="section bg-gray-50">
+    <div class="container-wide">
+      <div class="text-center mb-12">
+        <p class="subheadline mb-2">Leistungen</p>
+        <h2 class="text-3xl md:text-4xl font-bold">Was ich fuer Sie tun kann</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="card text-center">
+          <h3 class="text-xl font-bold mb-3">Leistung 1</h3>
+          <p class="text-gray-muted">Beschreibung der ersten Leistung. Passen Sie diesen Text an.</p>
+        </div>
+        <div class="card text-center">
+          <h3 class="text-xl font-bold mb-3">Leistung 2</h3>
+          <p class="text-gray-muted">Beschreibung der zweiten Leistung. Passen Sie diesen Text an.</p>
+        </div>
+        <div class="card text-center">
+          <h3 class="text-xl font-bold mb-3">Leistung 3</h3>
+          <p class="text-gray-muted">Beschreibung der dritten Leistung. Passen Sie diesen Text an.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section bg-dark text-white">
+    <div class="container-narrow text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Bereit fuer den naechsten Schritt?</h2>
+      <p class="text-gray-300 mb-8 max-w-xl mx-auto">
+        Lassen Sie uns gemeinsam besprechen, wie ich Ihnen helfen kann.
+      </p>
+      <a href={`${baseUrl}/kontakt`} class="btn-primary">Jetzt Kontakt aufnehmen</a>
+    </div>
+  </section>
+
+</Layout>

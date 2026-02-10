@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../config/site.config';
+---
+
+<Layout
+  title={`Kontakt – ${siteConfig.name}`}
+  description={`Nehmen Sie Kontakt mit ${siteConfig.owner.name} auf.`}
+>
+
+  <section class="section">
+    <div class="container-narrow">
+      <div class="text-center mb-12">
+        <p class="subheadline mb-4">Kontakt</p>
+        <h1 class="text-4xl md:text-5xl font-bold">Lassen Sie uns sprechen</h1>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        <!-- Kontaktinfos -->
+        <div>
+          <h2 class="text-2xl font-bold mb-6">So erreichen Sie mich</h2>
+
+          {siteConfig.owner.email && (
+            <div class="mb-6">
+              <p class="font-semibold text-dark mb-1">E-Mail</p>
+              <a href={`mailto:${siteConfig.owner.email}`} class="link">
+                {siteConfig.owner.email}
+              </a>
+            </div>
+          )}
+
+          {siteConfig.owner.location && (
+            <div class="mb-6">
+              <p class="font-semibold text-dark mb-1">Standort</p>
+              <p class="text-gray-muted">{siteConfig.owner.location}</p>
+            </div>
+          )}
+
+          {siteConfig.social.length > 0 && (
+            <div class="mb-6">
+              <p class="font-semibold text-dark mb-3">Social Media</p>
+              <div class="flex gap-4">
+                {siteConfig.social.map((link) => (
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-secondary text-sm"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
+        <!-- Prozess -->
+        <div>
+          <h2 class="text-2xl font-bold mb-6">Wie es weitergeht</h2>
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div class="w-8 h-8 rounded-full bg-accent text-white flex items-center justify-center font-bold text-sm shrink-0">1</div>
+              <div>
+                <p class="font-semibold text-dark">Kontakt aufnehmen</p>
+                <p class="text-gray-muted text-sm">Schreiben Sie mir eine Nachricht.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-8 h-8 rounded-full bg-accent text-white flex items-center justify-center font-bold text-sm shrink-0">2</div>
+              <div>
+                <p class="font-semibold text-dark">Erstgespraech</p>
+                <p class="text-gray-muted text-sm">Wir besprechen Ihre Ziele und Anforderungen.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-8 h-8 rounded-full bg-accent text-white flex items-center justify-center font-bold text-sm shrink-0">3</div>
+              <div>
+                <p class="font-semibold text-dark">Angebot</p>
+                <p class="text-gray-muted text-sm">Sie erhalten ein massgeschneidertes Angebot.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>

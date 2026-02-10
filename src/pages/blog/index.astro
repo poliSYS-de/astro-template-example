@@ -1,0 +1,69 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { siteConfig } from '../../config/site.config';
+import { getCollection } from 'astro:content';
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const posts = await getCollection('blog');
+const sortedPosts = posts.sort((a, b) =>
+  new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+// Deutsche Monatsformatierung
+const formatDate = (dateStr: string) => {
+  const date = new Date(dateStr);
+  return date.toLocaleDateString('de-DE', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
+};
+---
+
+<Layout
+  title={`Blog – ${siteConfig.name}`}
+  description={`Aktuelle Beitraege von ${siteConfig.owner.name}`}
+>
+
+  <section class="section">
+    <div class="container-wide">
+      <div class="text-center mb-16">
+        <p class="subheadline mb-4">Blog</p>
+        <h1 class="text-4xl md:text-5xl font-bold">Aktuelle Beitraege</h1>
+      </div>
+
+      {sortedPosts.length === 0 ? (
+        <p class="text-center text-gray-muted">Noch keine Beitraege vorhanden.</p>
+      ) : (
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {sortedPosts.map((post) => (
+            <a href={`${baseUrl}/blog/${post.id}`} class="group">
+              <article class="card h-full flex flex-col">
+                {post.data.image && (
+                  <img
+                    src={`${baseUrl}${post.data.image}`}
+                    alt={post.data.image_alt || post.data.title}
+                    width="640"
+                    height="360"
+                    loading="lazy"
+                    class="w-full aspect-video object-cover rounded-md mb-4"
+                  />
+                )}
+                <time class="text-sm text-gray-muted">{formatDate(post.data.date)}</time>
+                <h2 class="text-xl font-bold mt-2 mb-2 group-hover:text-accent transition-colors">
+                  {post.data.title}
+                </h2>
+                <p class="text-gray-muted text-sm flex-1">{post.data.description}</p>
+                <span class="text-accent font-medium text-sm mt-4 inline-block">
+                  Weiterlesen →
+                </span>
+              </article>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+</Layout>
