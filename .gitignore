@@ -9,3 +9,8 @@ npm-debug.log*
 .vscode/
 .astro/
 local-only/
+
+# Agent-Infrastruktur (nie in Git)
+claude.md
+_work/
+.claude/
