@@ -7,7 +7,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "optimize-images": "node scripts/optimize-images.mjs"
+    "optimize-images": "node scripts/optimize-images.mjs",
+    "favicons": "node scripts/generate-favicons.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.0",
@@ -17,6 +18,7 @@
     "tailwindcss": "^3.4.19"
   },
   "devDependencies": {
+    "png-to-ico": "^2.1.8",
     "sharp": "^0.34.5"
   }
 }
